@@ -80,7 +80,7 @@ WSGI_APPLICATION = 'MagisAir.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'test',
+        'NAME': 'magisair',
         'USER': 'root',
         'HOST': 'localhost',
         'PORT': '3307',
