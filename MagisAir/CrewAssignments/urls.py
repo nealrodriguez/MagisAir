@@ -4,7 +4,7 @@ from. views import (CrewMemberListView, CrewRoleListView,
                     CrewAssignmentListView, CrewAssignmentCreateView,
                     CrewAssignmentDetailView, CrewRoleCreateView,
                     CrewRoleDetailView, CrewMemberCreateView,
-                    CrewMemberDetailView)
+                    CrewMemberDetailView, SQL_Query2)
 
 urlpatterns = [
     path('members', CrewMemberListView.as_view(), name='crewMember-table'),
@@ -15,7 +15,8 @@ urlpatterns = [
     path('assignments/add', CrewAssignmentCreateView.as_view(), name='crewAssignment-add'),
     path('members/<pk>_added', CrewMemberDetailView.as_view(), name='added-member'),
     path('roles/<pk>_added', CrewRoleDetailView.as_view(), name='added-role'),
-    path('assignments/<pk>_added', CrewAssignmentDetailView.as_view(), name='added-assignment')
+    path('assignments/<pk>_added', CrewAssignmentDetailView.as_view(), name='added-assignment'),
+    path('SQLQuery2', SQL_Query2, name='SQL_Query2')
 ]
 
 app_name='CrewAssignments'

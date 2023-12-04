@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% load static %} 
+
+{% block title %} MAGIS Air Functionality {% endblock %}
+{% block content %}
+<h1>CREW ASSIGNMENTS FUNCTIONALITY </h1>
+<table>
+    <tr>
+        <th>Crew</th>
+        <th>Role</th>
+        <th>Flight</th>
+        <th>Destination</th>
+        <th>Departure</th>
+        <th>Arrival</th>
+    </tr>
+    {% for i in data %}
+    <tr>
+        <td>{{ i.Crew }}</td>
+        <td>{{ i.Role }}</td>
+        <td>{{ i.Flight }}</td>
+        <td>{{ i.Destination }}</td>
+        <td>{{ i.Departure }}</td>
+        <td>{{ i.Arrival }}</td>
+    </tr>
+    {% endfor %}
+</table>
+<p><a href="{%url 'CrewAssignments:crewAssignment-table'%}">Check Assignments</a></p>
+<p><a href="{%url 'CrewAssignments:crewRole-table'%}">Check Roles</a></p>
+{% endblock %} 

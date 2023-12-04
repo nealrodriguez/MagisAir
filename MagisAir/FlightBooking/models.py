@@ -5,6 +5,7 @@ class Passenger(models.Model):
     passenger_id = models.AutoField(primary_key=True)
     pax_lname = models.CharField(max_length=255)
     pax_fname = models.CharField(max_length=255)
+    pax_gender = models.CharField(max_length=2)
     pax_birthdate = models.DateField()
 
     def __str__(self):
@@ -33,6 +34,7 @@ class Flight(models.Model):
 class Booking(models.Model):
     bkg_passenger = models.OneToOneField('Passenger', models.DO_NOTHING, primary_key=True)
     bkg_flight = models.ForeignKey('Flight', models.DO_NOTHING, related_name='Flight')
+    bkg_bookingdate = models.DateField(blank=True, null=True)
 
     def get_absolute_url(self):
         return reverse('FlightBooking:added-booking', kwargs={'pk': self.pk})

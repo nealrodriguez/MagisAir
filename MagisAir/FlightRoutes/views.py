@@ -6,6 +6,11 @@ from django.views.generic.edit import CreateView
 
 from .models import Flight, Location, Route
 
+def SQL_Query1(request):
+    flights = Flight.objects.raw("SELECT flight.flight_id, origin.loc_name Origin, destination.loc_name Destination, flight.flt_datetime_departure AS Departure, flight.flt_datetime_arrival AS Arrival, CONCAT(HOUR(TIMEDIFF(flight.flt_datetime_arrival, flight.flt_datetime_departure)), ' hours ', MINUTE(TIMEDIFF(flight.flt_datetime_arrival, flight.flt_datetime_departure)), ' minutes') Duration FROM flight, route, location origin, location destination WHERE flight.flt_route_id = route.route_id AND route.rt_origin = origin.location_id AND route.rt_destination = destination.location_id;")
+    print(flights)
+    return render(request, 'FlightRoutes/SQL_Query1.html', {'data': flights})
+
 class LocationListView(ListView):
     model = Location
     def get(self, request):

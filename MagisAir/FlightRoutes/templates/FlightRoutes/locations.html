@@ -3,7 +3,6 @@
 
 {% block title %} MAGIS Air Locations {% endblock %}
 {% block content %}
-<link rel="stylesheet" href="{% static 'details_style.css' %}">
 <h1>MAGIS Air Locations</h1>
 <table>
     <tr>
@@ -20,4 +19,7 @@
 <p><a href="{%url 'FlightRoutes:location-add'%}">Add a Location</a></p>
 <p><a href="{%url 'FlightRoutes:flight-table'%}">Check Flights</a></p>
 <p><a href="{%url 'FlightRoutes:route-table'%}">Check Routes</a></p>
+<p><a href="{%url 'CrewAssignments:crewAssignment-table'%}">Check Assignments</a></p>
+<p><a href="{%url 'FlightBooking:booking-table'%}">Check Bookings</a></p>
+<p><a href="{%url 'FlightRoutes:SQL_Query1'%}">Check Flight Schedules Functionality</a></p>
 {% endblock %} 

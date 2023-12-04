@@ -3,17 +3,18 @@
 
 {% block title %} MAGIS Air Bookings {% endblock %}
 {% block content %}
-<link rel="stylesheet" href="{% static 'details_style.css' %}">
 <h1>MAGIS Air Bookings</h1>
 <table>
     <tr>
         <th>Passenger ID</th>
         <th>Flight ID</th>
+        <th>Booking Date</th>
     </tr>
     {% for object in bookings %}
     <tr>
         <td><a href="{% url 'FlightBooking:passenger-table'%}">{{ object.bkg_passenger }}</a></td>
         <td><a href="{%url 'FlightRoutes:flight-table'%}">{{ object.bkg_flight }}</a></td>
+        <td>{{ object.bkg_bookingdate }}</td>
     </tr>
     {% endfor %}
 </table>
@@ -21,4 +22,6 @@
 <p><a href="{% url 'FlightBooking:passenger-table'%}">Check Passengers</a></p>
 <p><a href="{%url 'FlightBooking:addItem-table'%}">Check Additional Items</a></p>
 <p><a href="{%url 'FlightBooking:booking-table'%}">Check Bookings</a></p>
+<p><a href="{%url 'CrewAssignments:crewAssignment-table'%}">Check Assignments</a></p>
+<p><a href="{%url 'FlightRoutes:flight-table'%}">Check Flights</a></p>
 {% endblock %} 

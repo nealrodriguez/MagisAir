@@ -1,5 +1,5 @@
 from django.db import models
-
+from django.urls import reverse
 # Create your models here.
 class Flight(models.Model):
     flight_id = models.CharField(primary_key=True, max_length=10)
@@ -45,9 +45,9 @@ class Role(models.Model):
         db_table = 'role'
 
 class CrewAssignment(models.Model):
-    cas_crew_id = models.OneToOneField('CrewMember', models.DO_NOTHING,related_name='+')
-    cas_flight_id = models.ForeignKey('Flight', models.DO_NOTHING, related_name='+')
-    cas_role_id = models.ForeignKey('Role', models.DO_NOTHING, related_name='+')
+    cas_crew = models.OneToOneField('CrewMember', models.DO_NOTHING,related_name='+', primary_key=True)
+    cas_flight = models.ForeignKey('Flight', models.DO_NOTHING, related_name='+')
+    cas_role = models.ForeignKey('Role', models.DO_NOTHING, related_name='+')
 
     def get_absolute_url(self):
         return reverse('CrewAssignments:added-assignment', kwargs={'pk': self.pk})
