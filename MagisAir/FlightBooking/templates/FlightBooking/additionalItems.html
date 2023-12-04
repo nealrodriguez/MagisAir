@@ -21,7 +21,8 @@
     </tr>
     {% endfor %}
 </table>
-<p><a href="{% url 'FlightBooking:passenger-table'%}">Check Passengers</a></p>
+<p><a href="{%url 'FlightBooking:addItem-add'%}">Add an Additional Item</a></p>
+<p><a href="{%url 'FlightBooking:passenger-table'%}">Check Passengers</a></p>
 <p><a href="{%url 'FlightBooking:booking-table'%}">Check Bookings</a></p>
 <p><a href="{%url 'FlightBooking:bookingAddItem-table'%}">Check Booking Additional Items</a></p>
 {% endblock %} 

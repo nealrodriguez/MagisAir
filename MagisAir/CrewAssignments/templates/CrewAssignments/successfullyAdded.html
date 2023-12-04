@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% load static %} 
+
+{% block title %} MAGIS Air {% endblock %}
+{% block content %}
+<link rel="stylesheet" href="{% static 'details_style.css' %}">
+<h1>Your Data was successfully added</h1>
+</table>
+<p><a href="{%url 'CrewAssignments:crewAssignment-table'%}">Check Assignments</a></p>
+<p><a href="{%url 'CrewAssignments:crewMember-table'%}">Check Members</a></p>
+<p><a href="{%url 'CrewAssignments:crewRole-table'%}">Check Roles</a></p>
+{% endblock %} 

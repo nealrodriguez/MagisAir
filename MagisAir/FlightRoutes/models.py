@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 
 # Create your models here.
 class Flight(models.Model):
@@ -10,6 +11,9 @@ class Flight(models.Model):
     def __str__(self):
         return '{}'.format(self.flight_id)
 
+    def get_absolute_url(self):
+        return reverse('FlightRoutes:added-flight', kwargs={'pk': self.pk})
+    
     class Meta:
         managed = False
         db_table = 'flight'
@@ -20,6 +24,9 @@ class Location(models.Model):
 
     def __str__(self):
         return '{}'.format(self.location_id)
+    
+    def get_absolute_url(self):
+        return reverse('FlightRoutes:added-location', kwargs={'pk': self.pk})
 
     class Meta:
         managed = False
@@ -33,6 +40,9 @@ class Route(models.Model):
 
     def __str__(self):
         return '{}'.format(self.route_id)
+    
+    def get_absolute_url(self):
+        return reverse('FlightRoutes:added-route', kwargs={'pk': self.pk})
 
     class Meta:
         managed = False

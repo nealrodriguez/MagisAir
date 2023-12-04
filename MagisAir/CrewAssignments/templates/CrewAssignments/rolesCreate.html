@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% load static %} 
+{% block title %} Add a Role {% endblock %} 
+{% block content %}
+    <h1>Add a New Role</h1>    
+    <form action="" method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <input type="submit" value="Save New Role">
+    </form>
+{% endblock %}

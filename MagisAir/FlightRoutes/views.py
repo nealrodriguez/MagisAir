@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.views import View
 from django.views.generic.detail import DetailView
 from django.views.generic.list import ListView
+from django.views.generic.edit import CreateView
 
 from .models import Flight, Location, Route
 
@@ -28,3 +29,30 @@ class RouteListView(ListView):
         return render(request, 'FlightRoutes/routes.html', {
             'routes': routes
         })
+
+class LocationCreateView(CreateView):
+    model = Location
+    fields = '__all__'
+    template_name = 'FlightRoutes/locationsCreate.html'
+
+class FlightCreateView(CreateView):
+    model = Flight
+    fields = '__all__'
+    template_name = 'FlightRoutes/flightsCreate.html'
+
+class RouteCreateView(CreateView):
+    model = Route
+    fields = '__all__'
+    template_name = 'FlightRoutes/routesCreate.html'
+
+class LocationDetailview(DetailView):
+    model = Location
+    template_name = 'FlightRoutes/successfullyAdded.html'
+
+class FlightDetailView(DetailView):
+    model = Flight
+    template_name = 'FlightRoutes/successfullyAdded.html'
+
+class RouteDetailView(DetailView):
+    model = Route
+    template_name = 'FlightRoutes/successfullyAdded.html'

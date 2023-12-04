@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% load static %} 
+
+{% block title %} MAGIS Air {% endblock %}
+{% block content %}
+<link rel="stylesheet" href="{% static 'details_style.css' %}">
+<h1>Your Data was successfully added</h1>
+</table>
+<p><a href="{% url 'FlightBooking:passenger-table'%}">Check Passengers</a></p>
+<p><a href="{%url 'FlightBooking:booking-table'%}">Check Bookings</a></p>
+<p><a href="{%url 'FlightBooking:addItem-table'%}">Check Additional Items</a></p>
+<p><a href="{%url 'FlightBooking:bookingAddItem-table'%}">Check Booking Additional Items</a></p>
+{% endblock %} 

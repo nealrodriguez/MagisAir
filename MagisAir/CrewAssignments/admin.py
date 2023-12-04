@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import CrewAssignment, CrewMember, Role
+from .models import CrewAssignment, CrewMember, Role, Flight
 
 class CrewAssignmentAdmin(admin.ModelAdmin):
     model = CrewAssignment

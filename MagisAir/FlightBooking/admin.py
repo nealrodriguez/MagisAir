@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Booking, BookingAdditionalitem, Passenger, Additionalitem
+from .models import Booking, BookingAdditionalitem, Passenger, Additionalitem, Flight
 # Register your models here.
 
 class PassengerAdmin(admin.ModelAdmin):
@@ -8,6 +8,13 @@ class PassengerAdmin(admin.ModelAdmin):
     list_display = ('passenger_id', 'pax_lname',
                     'pax_fname',
                     'pax_birthdate',)
+
+class FlightAdmin(admin.ModelAdmin):
+    model = Flight
+    search_fields = ('flight_id',)
+    list_display = ('flight_id', 'flt_route',
+                    'flt_datetime_departure',
+                    'flt_datetime_arrival',)
 
 class BookingAdmin(admin.ModelAdmin):
     model = Booking
@@ -31,3 +38,4 @@ admin.site.register(Passenger, PassengerAdmin)
 admin.site.register(Booking, BookingAdmin)
 admin.site.register(Additionalitem, AdditionalitemAdmin)
 admin.site.register(BookingAdditionalitem, BookingAdditionalitemAdmin)
+admin.site.register(Flight, FlightAdmin)

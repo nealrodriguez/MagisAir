@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.views import View
 from django.views.generic.detail import DetailView
 from django.views.generic.list import ListView
+from django.views.generic.edit import CreateView
 
 from .models import Passenger, Booking, Additionalitem, BookingAdditionalitem
 
@@ -36,3 +37,39 @@ class BookingAdditionalitemListView(ListView):
         return render(request, 'FlightBooking/bookingAddItems.html', {
             'bookingAddItems': bookingAddItems
         })
+
+class PassengerCreateView(CreateView):
+    model = Passenger
+    fields = '__all__'
+    template_name = 'FlightBooking/passengersCreate.html'
+
+class BookingCreateView(CreateView):
+    model = Booking
+    fields = '__all__'
+    template_name = 'FlightBooking/bookingsCreate.html'
+
+class AdditionalitemCreateView(CreateView):
+    model = Additionalitem
+    fields = '__all__'
+    template_name = 'FlightBooking/additionalitemsCreate.html'
+
+class BookingAdditionalitemCreateView(CreateView):
+    model = BookingAdditionalitem
+    fields = '__all__'
+    template_name = 'FlightBooking/bookingAddItemsCreate.html'
+
+class PassengerDetailview(DetailView):
+    model = Passenger
+    template_name = 'FlightBooking/successfullyAdded.html'
+
+class BookingDetailView(DetailView):
+    model = Booking
+    template_name = 'FlightBooking/successfullyAdded.html'
+
+class AdditionalitemDetailview(DetailView):
+    model = Additionalitem
+    template_name = 'FlightBooking/successfullyAdded.html'
+
+class BookingAdditionalitemDetailview(DetailView):
+    model = BookingAdditionalitem
+    template_name = 'FlightBooking/successfullyAdded.html'
