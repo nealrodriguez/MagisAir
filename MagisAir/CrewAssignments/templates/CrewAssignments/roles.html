@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% load static %} 
+
+{% block title %} MAGIS Air Crew Roles {% endblock %}
+{% block content %}
+<link rel="stylesheet" href="{% static 'details_style.css' %}">
+<h1>MAGIS Air Crew Roles</h1>
+<table>
+    <tr>
+        <th>Crew ID</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+    </tr>
+    {% for object in crewRoles %}
+    <tr>
+        <td>{{ object.role_id }}</td>
+        <td>{{ object.rle_title }}</td>
+        <td>{{ object.rle_desc }}</td>
+    </tr>
+    {% endfor %}
+</table>
+<p><a href="{%url 'CrewAssignments:crewAssignment-table'%}">Check Assignments</a></p>
+<p><a href="{%url 'CrewAssignments:crewMember-table'%}">Check Members</a></p>
+{% endblock %} 

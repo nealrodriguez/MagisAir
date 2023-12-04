@@ -18,5 +18,8 @@ from django.urls import include, path
 
 urlpatterns = [
     path('flights/', include('flights.urls', namespace='flights')),
+    path('CrewAssignments/', include('CrewAssignments.urls', namespace='CrewAssignments')),
+    path('FlightRoutes/', include('FlightRoutes.urls', namespace='FlightRoutes')),
+    path('FlightBooking/', include('FlightBooking.urls', namespace='FlightBooking')),
     path('admin/', admin.site.urls),
 ]

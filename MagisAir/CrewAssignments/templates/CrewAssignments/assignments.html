@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% load static %} 
+
+{% block title %} MAGIS Air Crew Assignments {% endblock %}
+{% block content %}
+<link rel="stylesheet" href="{% static 'details_style.css' %}">
+<h1>MAGIS Air Crew Assignments</h1>
+<table>
+    <tr>
+        <th>Crew ID</th>
+        <th>Flight ID</th>
+        <th>Route ID</th>
+    </tr>
+    {% for object in crewAssignments %}
+    <tr>
+        <td><a href="{%url 'CrewAssignments:crewMember-table'%}">{{ object.cas_crew_id }}</a></td>
+        <td><a href="{%url 'FlightRoutes:flight-table'%}">{{ object.cas_flight_id }}</a></td>
+        <td><a href="{%url 'CrewAssignments:crewRole-table'%}">{{ object.cas_role_id }}</a></td>
+    </tr>
+    {% endfor %}
+</table>
+<p><a href="{%url 'CrewAssignments:crewMember-table'%}">Check Members</a></p>
+<p><a href="{%url 'CrewAssignments:crewRole-table'%}">Check Roles</a></p>
+{% endblock %} 

@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load static %} 
+
+{% block title %} MAGIS Air Locations {% endblock %}
+{% block content %}
+<link rel="stylesheet" href="{% static 'details_style.css' %}">
+<h1>MAGIS Air Locations</h1>
+<table>
+    <tr>
+        <th>Location ID</th>
+        <th>Location Name</th>
+    </tr>
+    {% for object in locations %}
+    <tr>
+        <td>{{ object.location_id }}</td>
+        <td>{{ object.loc_name }}</td>
+    </tr>
+    {% endfor %}
+</table>
+<p><a href="{%url 'FlightRoutes:flight-table'%}">Check Flights</a></p>
+<p><a href="{%url 'FlightRoutes:route-table'%}">Check Routes</a></p>
+{% endblock %} 

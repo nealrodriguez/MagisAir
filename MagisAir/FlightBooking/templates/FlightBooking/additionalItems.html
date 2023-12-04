@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load static %} 
+
+{% block title %} MAGIS Air Additional Items {% endblock %}
+{% block content %}
+<link rel="stylesheet" href="{% static 'details_style.css' %}">
+<h1>MAGIS Air Additional Items</h1>
+<table>
+    <tr>
+        <th>Additional Item ID</th>
+        <th>Item Name</th>
+        <th>Item Description</th>
+        <th>Cost</th>
+    </tr>
+    {% for object in additionalItems %}
+    <tr>
+        <td>{{ object.additionalitem_id }}</td>
+        <td>{{ object.aitm_item }}</td>
+        <td>{{ object.aitm_itemdesc }}</td>
+        <td>{{ object.aitm_cost }}</td>
+    </tr>
+    {% endfor %}
+</table>
+<p><a href="{% url 'FlightBooking:passenger-table'%}">Check Passengers</a></p>
+<p><a href="{%url 'FlightBooking:booking-table'%}">Check Bookings</a></p>
+<p><a href="{%url 'FlightBooking:bookingAddItem-table'%}">Check Booking Additional Items</a></p>
+{% endblock %} 

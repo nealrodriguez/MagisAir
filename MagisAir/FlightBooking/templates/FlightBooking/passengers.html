@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load static %} 
+
+{% block title %} MAGIS Air Passengers {% endblock %}
+{% block content %}
+<link rel="stylesheet" href="{% static 'details_style.css' %}">
+<h1>MAGIS Air Passengers</h1>
+<table>
+    <tr>
+        <th>Passenger ID</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Birth Date</th>
+    </tr>
+    {% for object in passengers %}
+    <tr>
+        <td>{{ object.passenger_id }}</td>
+        <td>{{ object.pax_fname }}</td>
+        <td>{{ object.pax_lname }}</td>
+        <td>{{ object.pax_birthdate }}</td>
+    </tr>
+    {% endfor %}
+</table>
+<p><a href="{%url 'FlightBooking:booking-table'%}">Check Bookings</a></p>
+<p><a href="{%url 'FlightBooking:addItem-table'%}">Check Additional Items</a></p>
+<p><a href="{%url 'FlightBooking:bookingAddItem-table'%}">Check Booking Additional Items</a></p>
+{% endblock %} 

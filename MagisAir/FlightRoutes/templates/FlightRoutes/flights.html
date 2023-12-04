@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load static %} 
+
+{% block title %} MAGIS Air Flights {% endblock %}
+{% block content %}
+<link rel="stylesheet" href="{% static 'details_style.css' %}">
+<h1>MAGIS Air Flights</h1>
+<table>
+    <tr>
+        <th>Flight ID</th>
+        <th>Flight Route</th>
+        <th>Departure Date and Time</th>
+        <th>Arrival Date and Time</th>
+    </tr>
+    {% for object in flights %}
+    <tr>
+        <td>{{ object.flight_id }}</td>
+        <td><a href="{%url 'FlightRoutes:route-table' %}">{{ object.flt_route }}</a></td>
+        <td>{{ object.flt_datetime_departure }}</td>
+        <td>{{ object.flt_datetime_arrival }}</td>
+    </tr>
+    {% endfor %}
+</table>
+<p><a href="{%url 'FlightRoutes:location-table'%}">Check Locations</a></p>
+<p><a href="{%url 'FlightRoutes:route-table'%}">Check Routes</a></p>
+{% endblock %} 

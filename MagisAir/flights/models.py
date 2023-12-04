@@ -7,6 +7,7 @@
 # Feel free to rename the models, but don't rename db_table values or field names.
 from django.db import models
 
+
 class Additionalitem(models.Model):
     additionalitem_id = models.AutoField(primary_key=True)
     aitm_item = models.CharField(max_length=255)
@@ -16,7 +17,6 @@ class Additionalitem(models.Model):
     class Meta:
         managed = False
         db_table = 'additionalitem'
-
 
 class Booking(models.Model):
     bkg_passenger = models.OneToOneField('Passenger', models.DO_NOTHING, primary_key=True)
@@ -31,14 +31,14 @@ class Booking(models.Model):
 class BookingAdditionalitem(models.Model):
     bai_passenger = models.OneToOneField(Booking, models.DO_NOTHING, primary_key=True)
     bai_flight = models.ForeignKey(Booking, models.DO_NOTHING, related_name='+')
-    bai_additionalitem = models.ForeignKey(Additionalitem, models.DO_NOTHING)
+    bai_additionalitem = models.ForeignKey(Additionalitem, models.DO_NOTHING, 
+                                            related_name='+')
     bai_quantity = models.IntegerField()
 
     class Meta:
         managed = False
         db_table = 'booking_additionalitem'
         unique_together = (('bai_passenger', 'bai_flight', 'bai_additionalitem'),)
-
 
 class CrewAssignment(models.Model):
     cas_crew_id = models.IntegerField(primary_key=True)
@@ -50,7 +50,6 @@ class CrewAssignment(models.Model):
         db_table = 'crew_assignment'
         unique_together = (('cas_crew_id', 'cas_flight_id', 'cas_role_id'),)
 
-
 class CrewMember(models.Model):
     crew_id = models.AutoField(primary_key=True)
     crw_lname = models.CharField(max_length=255)
@@ -59,7 +58,6 @@ class CrewMember(models.Model):
     class Meta:
         managed = False
         db_table = 'crew_member'
-
 
 class Flight(models.Model):
     flight_id = models.CharField(primary_key=True, max_length=10)
@@ -90,6 +88,16 @@ class Passenger(models.Model):
     class Meta:
         managed = False
         db_table = 'passenger'
+
+
+class Role(models.Model):
+    role_id = models.AutoField(primary_key=True)
+    rle_title = models.CharField(max_length=255)
+    rle_desc = models.CharField(max_length=255, blank=True, null=True)
+
+    class Meta:
+        managed = False
+        db_table = 'role'
 
 
 class Route(models.Model):
